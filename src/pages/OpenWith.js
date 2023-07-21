@@ -79,7 +79,7 @@ window.OME.open_with_options = [
     }
 ];
 
-function OpenWith() {
+function OpenWith({isLoggedIn}) {
 
     const context = React.useContext(CXContext);
     const selectedIds = context.selectedIds;
@@ -93,6 +93,11 @@ function OpenWith() {
     }
 
     React.useEffect(() => {
+
+        if (!isLoggedIn) {
+            return;
+        }
+
         // Run once on mount...
         let url = window.OMEROWEB_INDEX + `webgateway/open_with/`;
         fetch(url, { mode: 'cors', credentials: 'include' })
@@ -109,7 +114,7 @@ function OpenWith() {
             }).catch(err => {
                 console.log("Error", err);
             })
-    }, []);
+    }, [isLoggedIn]);
 
     // Get Dataset IDs, Image IDs, ROI IDs
     if (ndx === undefined) {

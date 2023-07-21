@@ -1,5 +1,11 @@
 
-let cors_headers = { mode: 'cors', credentials: 'include' };
+let cors_headers = { 
+    mode: 'cors', 
+    credentials: 'include', 
+    Headers: {
+        "Cookie": "sessionid=yywa9u6m2429yd0vkirgirbieun7bacr"
+    }
+};
 
 export async function initCorsHeaders(url) {
     // IF we're using a server that is different from our host,

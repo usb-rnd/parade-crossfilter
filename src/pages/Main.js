@@ -6,7 +6,11 @@ import LoadingPercent from '../dialogs/LoadingPercent';
 import { getUrlParameter } from '../utils';
 import { CXContext } from "../crossfilter/DataContext";
 
-export default () => {
+export default ({isLoggedIn}) => {
+
+    if (!isLoggedIn) {
+        return null;
+    }
 
     const context = React.useContext(CXContext);
 

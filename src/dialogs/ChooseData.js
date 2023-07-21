@@ -57,6 +57,8 @@ function ChooseData({ setDataToLoad, screen }) {
             setShow(true);
             setLoading(true);
 
+            console.log(url)
+
             fetchJson(url)
                 .then(data => {
                     setLoading(false);
